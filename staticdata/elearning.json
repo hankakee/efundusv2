@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "category": "course",
+        "imgUrl":"assets/courses/htmlcsscourse.jpg",
+        "reviews": 523,
+        "rate": 3.9,
+        "price": 50.99,
+        "oldprice":90.99,
+        "currency":"USD",
+        "period": "Nouveau",
+        "f_name":"HTML the complete course",
+        "p_former":"Michel Karnet",
+        "s_former":",CyberCarnet formations"
+    },
+    {
+        "id": 2,
+        "category": "course",
+        "imgUrl":"assets/courses/jscourse.jpg",
+        "reviews": 156,
+        "rate": 4.2,
+        "price": 19.99,
+        "oldprice":19.99,
+        "currency":"USD",
+        "period": "Nouveau",
+        "f_name":"Javascript the complete course",
+        "p_former":"Josephine Buteau",
+        "s_former":",Cyprien Lassalle"
+    }
+]
