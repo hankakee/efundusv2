@@ -64,6 +64,7 @@ class _AllcoursesState extends State<Allcourses> {
                           border:
                               Border.all(width: 2, color: Utils.cardsColor)),
                     ),
+                    const SizedBox(height: 20.0),
                     initSearch
                         ? const SearchCourses(needed: "gridcourse needed")
                         : const SearchCourses(needed: "")

@@ -19,16 +19,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 1;
-  final _pageviewController = PageController();
+  int _selectedIndex = 0;
   String originlanguage = "US";
   final List<String> tabLanguage = ["HT", "US", "KR"];
-
-  @override
-  void dispose() {
-    _pageviewController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -65,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       const Positioned(
                         child: Icon(
-                          Icons.shopping_bag_outlined,
+                          LineIcons.shoppingBasket,
                           color: Colors.grey,
                           size: 28.0,
                         ),
@@ -401,11 +394,11 @@ class _HomePageState extends State<HomePage> {
             ),
             const BottomNavigationBarItem(
               icon: Icon(
-                LineIcons.search,
+                LineIcons.shoppingBasket,
               ),
               label: 'Search',
-              activeIcon:
-                  Pillsnavigation(title: "Search", icon: LineIcons.search),
+              activeIcon: Pillsnavigation(
+                  title: "Cart", icon: LineIcons.shoppingBasket),
             ),
             const BottomNavigationBarItem(
               icon: Icon(

@@ -84,28 +84,11 @@ class _DashboardState extends State<Dashboard> {
                   padding: const EdgeInsets.only(top: 4.0),
                   child: SizedBox(
                       // width: double.infinity,
-                      child: CarouselSlider(
-                          options: CarouselOptions(
-                              height: 302.0,
-                              reverse: false,
-                              autoPlay: false,
-                              enableInfiniteScroll: false,
-                              // fulscreen carrousel
-                              padEnds: false,
-                              initialPage: 0),
-                          items: [1, 2, 3, 4, 5].map((i) {
-                            return Builder(
-                              builder: (BuildContext context) {
-                                return Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: const CardCourse(
-                                    isFullScreen: false,
-                                    named: "",
-                                  ),
-                                );
-                              },
-                            );
-                          }).toList())),
+                      // ListView.builder(itemBuilder: itemBuilder)
+
+                      // child: )
+
+                      ),
                 ),
 
                 //categories
@@ -208,7 +191,7 @@ class _DashboardState extends State<Dashboard> {
                     padding: const EdgeInsets.only(top: 4.0),
                     child: CarouselSlider(
                         options: CarouselOptions(
-                            height: 302.0,
+                            height: 295.0,
                             reverse: false,
                             autoPlay: false,
                             enableInfiniteScroll: false,

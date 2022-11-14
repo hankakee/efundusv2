@@ -20,8 +20,7 @@ class _SearchCoursesState extends State<SearchCourses> {
     try {
       String jsonData =
           await rootBundle.loadString("staticdata/elearning.json");
-      Utils.kprint(jsonData);
-      await Future.delayed(const Duration(seconds: 10));
+      // await Future.delayed(const Duration(seconds: 2));
       return jsonData;
     } catch (err) {
       return "";
@@ -38,6 +37,8 @@ class _SearchCoursesState extends State<SearchCourses> {
       child: FutureBuilder(
         future: getElearningBySearch(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
+          Utils.kprint(snapshot);
+
           return snapshot.connectionState == ConnectionState.waiting
               ? const CircularProgressIndicator()
               : CardCourse(isFullScreen: true, named: "named");

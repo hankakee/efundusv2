@@ -1,20 +1,27 @@
 import 'package:efundusv2/utils/constants.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:line_icons/line_icons.dart';
 
-class CardCourse extends StatelessWidget {
+class CardCourse extends StatefulWidget {
   final bool isFullScreen;
   final String named;
   const CardCourse({Key? key, required this.isFullScreen, required this.named})
       : super(key: key);
 
   @override
+  State<CardCourse> createState() => _CardCourseState();
+}
+
+class _CardCourseState extends State<CardCourse> {
+  @override
   Widget build(BuildContext context) {
     return Container(
-      width: isFullScreen
+      width: widget.isFullScreen
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 1.3,
-      height: 300.0,
+      // width: MediaQuery.of(context).size.width,
+      height: 290.0,
       margin: const EdgeInsets.only(left: 5.0, top: 5.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(
@@ -25,7 +32,7 @@ class CardCourse extends StatelessWidget {
                 child: Image.asset(
                   "assets/courses/htmlcsscourse.jpg",
                   fit: BoxFit.cover,
-                  width: isFullScreen
+                  width: widget.isFullScreen
                       ? MediaQuery.of(context).size.width
                       : MediaQuery.of(context).size.width / 1.3,
                 ),
@@ -34,25 +41,25 @@ class CardCourse extends StatelessWidget {
                   right: 5.0,
                   top: 5.0,
                   child: Icon(
-                    Icons.shopping_basket_outlined,
-                    // Icons.shopping_basket_rounded,
+                    LineIcons.shoppingBasket,
+                    size: widget.isFullScreen ? 30.0 : 24.0,
                     color: Utils.cardsColor,
                   )),
             ],
           ),
         ),
-        Container(
+        SizedBox(
           width: double.infinity,
           // padding: const EdgeInsets.only(top: 4.0),
           child: Text(
-            named,
+            widget.named,
             textAlign: TextAlign.left,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
           ),
         ),
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
+          padding: const EdgeInsets.only(top: 1.0, bottom: 5.0),
           child: const Text(
             "Michel Karnet ,Cyber carnet formations",
             textAlign: TextAlign.left,
@@ -100,7 +107,7 @@ class CardCourse extends StatelessWidget {
         ),
       ]),
       decoration: BoxDecoration(
-        // color: Utils.cardsColor,
+        color: Utils.cardsColor,
         borderRadius: BorderRadius.circular(4),
       ),
     );
