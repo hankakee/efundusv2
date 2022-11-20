@@ -1,5 +1,6 @@
 import 'package:efundusv2/utils/constants.dart';
 import 'package:efundusv2/widget/card_course.dart';
+import 'package:efundusv2/widget/cardslider.dart';
 import 'package:efundusv2/widget/eventbanner.dart';
 import 'package:efundusv2/widget/pillscategories.dart';
 import "package:flutter/material.dart";
@@ -78,6 +79,7 @@ class _DashboardState extends State<Dashboard> {
                     )
                   ],
                 ),
+                const CardCourseFactorySlider(qty: 5),
 
                 //sliders
                 Padding(
@@ -151,31 +153,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
 
                 //sliders
-                // TODO remettre plus tard
-                Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: CarouselSlider(
-                        options: CarouselOptions(
-                            height: 302.0,
-                            reverse: false,
-                            autoPlay: false,
-                            enableInfiniteScroll: false,
-                            // fulscreen carrousel
-                            padEnds: false,
-                            initialPage: 0),
-                        items: [1, 2, 3, 4, 5].map((i) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Container(
-                                width: MediaQuery.of(context).size.width,
-                                child: const CardCourse(
-                                  isFullScreen: false,
-                                  named: "",
-                                ),
-                              );
-                            },
-                          );
-                        }).toList())),
+                const CardCourseFactorySlider(qty: 5),
                 const SizedBox(height: 20.0),
                 const Text(
                   "Small budget?",
@@ -187,30 +165,7 @@ class _DashboardState extends State<Dashboard> {
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.grey, fontSize: 15.0),
                 ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: CarouselSlider(
-                        options: CarouselOptions(
-                            height: 295.0,
-                            reverse: false,
-                            autoPlay: false,
-                            enableInfiniteScroll: false,
-                            // fulscreen carrousel
-                            padEnds: false,
-                            initialPage: 0),
-                        items: [1, 2, 3, 4, 5].map((i) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Container(
-                                width: MediaQuery.of(context).size.width,
-                                child: const CardCourse(
-                                  isFullScreen: false,
-                                  named: "",
-                                ),
-                              );
-                            },
-                          );
-                        }).toList())),
+                const CardCourseFactorySlider(qty: 5),
               ]),
             ),
           ),

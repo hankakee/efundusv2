@@ -33,7 +33,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Onboarding Example';
+  static final String title = 'Efundus';
 
   @override
   Widget build(BuildContext context) => MaterialApp(

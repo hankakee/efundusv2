@@ -31,7 +31,7 @@ class _SearchCoursesState extends State<SearchCourses> {
   Widget build(BuildContext context) {
     Utils.kprint("Widget needed : " + widget.needed);
     if (widget.needed.isEmpty) {
-      return Text("No data found so we can load all courses...");
+      return const Text("No data found so we can load all courses...");
     }
     return Center(
       child: FutureBuilder(
@@ -41,7 +41,15 @@ class _SearchCoursesState extends State<SearchCourses> {
 
           return snapshot.connectionState == ConnectionState.waiting
               ? const CircularProgressIndicator()
-              : CardCourse(isFullScreen: true, named: "named");
+              : Container(
+                  height: MediaQuery.of(context).size.height - 10,
+                  child: ListView.builder(
+                      itemCount: 10,
+                      itemBuilder: (BuildContext context, int index) {
+                        return const CardCourse(
+                            isFullScreen: true, named: "named");
+                      }),
+                );
         },
       ),
     );

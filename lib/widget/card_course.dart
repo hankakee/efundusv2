@@ -63,7 +63,7 @@ class _CardCourseState extends State<CardCourse> {
           child: const Text(
             "Michel Karnet ,Cyber carnet formations",
             textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 11.0),
+            style: TextStyle(fontSize: 13.0),
           ),
         ),
         Row(
@@ -107,7 +107,7 @@ class _CardCourseState extends State<CardCourse> {
         ),
       ]),
       decoration: BoxDecoration(
-        color: Utils.cardsColor,
+        // color: Utils.cardsColor,
         borderRadius: BorderRadius.circular(4),
       ),
     );

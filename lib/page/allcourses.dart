@@ -22,7 +22,7 @@ class _AllcoursesState extends State<Allcourses> {
       child: Container(
         child: SingleChildScrollView(
           child: Container(
-            height: 2000,
+            height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 SizedBox(
