@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         title: title,
         theme: ThemeData(
             primarySwatch: Colors.lightBlue, fontFamily: 'Plus Jakarta Sans'),
-        // home: OnBoardingPage(),
-        home: const HomePage(),
+        home: OnBoardingPage(),
+        // home: const HomePage(),
       );
 }

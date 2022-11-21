@@ -20,8 +20,6 @@ class _CardCourseState extends State<CardCourse> {
       width: widget.isFullScreen
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width / 1.3,
-      // width: MediaQuery.of(context).size.width,
-      height: 290.0,
       margin: const EdgeInsets.only(left: 5.0, top: 5.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         SizedBox(
@@ -107,7 +105,7 @@ class _CardCourseState extends State<CardCourse> {
         ),
       ]),
       decoration: BoxDecoration(
-        // color: Utils.cardsColor,
+        // color: Utils.primaryColor,
         borderRadius: BorderRadius.circular(4),
       ),
     );

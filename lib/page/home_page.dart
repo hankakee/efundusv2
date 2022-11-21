@@ -427,6 +427,9 @@ class _HomePageState extends State<HomePage> {
         child: Text("User..."),
       )
     };
+    if (index < 0 || index > 3) {
+      return const Dashboard();
+    }
     return iFrames[index];
   }
 

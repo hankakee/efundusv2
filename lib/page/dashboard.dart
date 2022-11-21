@@ -95,7 +95,7 @@ class _DashboardState extends State<Dashboard> {
 
                 //categories
                 Padding(
-                  padding: const EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 0.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
@@ -154,7 +154,7 @@ class _DashboardState extends State<Dashboard> {
 
                 //sliders
                 const CardCourseFactorySlider(qty: 5),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: 4.0),
                 const Text(
                   "Small budget?",
                   textAlign: TextAlign.center,

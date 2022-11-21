@@ -9,7 +9,7 @@ class CardCourseFactorySlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 310.0,
+      height: 300.0,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: qty,
