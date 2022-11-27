@@ -54,8 +54,11 @@ class _SearchCoursesState extends State<SearchCourses> {
                               children: const [
                                 SizedBox(
                                     child: CardCourse(
-                                        isFullScreen: true,
-                                        named: "Nam djima")),
+                                  isFullScreen: true,
+                                  named: "Nam djima",
+                                  hasDescribe: true,
+                                  hasleftShopppingIcon: false,
+                                )),
                                 Divider()
                               ],
                             ));

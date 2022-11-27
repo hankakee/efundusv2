@@ -16,7 +16,12 @@ class CardCourseFactorySlider extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Container(
               margin: const EdgeInsets.symmetric(horizontal: 1.0),
-              child: const CardCourse(isFullScreen: false, named: "Lbl named"),
+              child: const CardCourse(
+                isFullScreen: false,
+                named: "Lbl named",
+                hasDescribe: false,
+                hasleftShopppingIcon: true,
+              ),
             );
           }),
     );

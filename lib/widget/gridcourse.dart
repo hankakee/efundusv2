@@ -27,6 +27,8 @@ class Gridcourse extends StatelessWidget {
                     child: CardCourse(
                       isFullScreen: false,
                       named: named,
+                      hasDescribe: true,
+                      hasleftShopppingIcon: false,
                     ),
                   );
                 },

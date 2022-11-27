@@ -64,7 +64,8 @@ class _AllcoursesState extends State<Allcourses> {
             ),
             initSearch
                 ?
-                //list of all items
+
+                //list of searched items
                 SizedBox(
                     height: MediaQuery.of(context).size.height - 200,
                     child: ListView(
@@ -74,7 +75,7 @@ class _AllcoursesState extends State<Allcourses> {
                     ),
                   )
                 :
-                //list of searched items
+                //list of all items
                 Container(
                     height: MediaQuery.of(context).size.height - 200,
                     child: ListView(
@@ -90,49 +91,6 @@ class _AllcoursesState extends State<Allcourses> {
                   )
           ],
         ),
-        // child: ListView(children: [
-        //   const SizedBox(height: 10.0),
-
-        //   // textfield
-        //   Container(
-        //     margin: const EdgeInsets.only(left: 5.0, right: 5.0),
-        //     child: TextFormField(
-        //       obscureText: false,
-        //       enableSuggestions: false,
-        //       autocorrect: false,
-        //       controller: searchController,
-        //       style: const TextStyle(
-        //         fontSize: 15,
-        //         color: Colors.black,
-        //       ),
-        //       decoration: const InputDecoration(
-        //         icon: Icon(LineIcons.search, color: Color(0xFF5D9DEB)),
-        //         hintText: "Search for a keyword",
-        //         border: InputBorder.none,
-        //       ),
-        //       onChanged: (text) {
-        //         Utils.kprint(text);
-        //         if (text.isEmpty) {
-        //           setState(() {
-        //             initSearch = false;
-        //           });
-        //         } else {
-        //           setState(() {
-        //             initSearch = true;
-        //           });
-        //         }
-        //       },
-        //     ),
-        //     decoration: BoxDecoration(
-        //         color: Colors.white,
-        //         borderRadius: BorderRadius.circular(2.0),
-        //         border: Border.all(width: 2, color: Utils.cardsColor)),
-        //   ),
-
-        //
-        //       ? List.generate(5, (index) =>  wrapperCard())
-        //       : const Text("Nothing..."),
-        // ]),
       ),
     );
   }
@@ -142,7 +100,13 @@ class _AllcoursesState extends State<Allcourses> {
         padding: const EdgeInsets.all(0.0),
         child: Column(
           children: const [
-            SizedBox(child: CardCourse(isFullScreen: true, named: "named")),
+            SizedBox(
+                child: CardCourse(
+              isFullScreen: true,
+              named: "named",
+              hasDescribe: false,
+              hasleftShopppingIcon: true,
+            )),
             Divider()
           ],
         ));
