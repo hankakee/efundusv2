@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   String originlanguage = "US";
   final List<String> tabLanguage = ["HT", "US", "KR"];
 

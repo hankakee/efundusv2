@@ -21,86 +21,126 @@ class _DashboardState extends State<Dashboard> {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(2.0),
-        child: Container(
-          child: SingleChildScrollView(
+        child: ListView(
             // shrinkWrap: true,
             // color: const Color(0XFFF9F9F9),
-            child: SizedBox(
-              height: 1700,
-              child: Column(children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  // child: Container(
-                  //   height: 50,
-                  //   child: Column(children: [
-                  //     Padding(
-                  //       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  //       child: TextFormField(
-                  //         obscureText: false,
-                  //         enableSuggestions: false,
-                  //         autocorrect: false,
-                  //         controller: searchController,
-                  //         style: const TextStyle(
-                  //           fontSize: 15,
-                  //           color: Colors.black,
-                  //         ),
-                  //         decoration: const InputDecoration(
-                  //           icon: Icon(LineIcons.search, color: Color(0xFF5D9DEB)),
-                  //           hintText: "Search for a keyword",
-                  //           // border: InputBorder.none,
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ]),
-                  //   // decoration: BoxDecoration(
-                  //   //     color: Colors.white,
-                  //   //     borderRadius: BorderRadius.circular(25),
-                  //   //     border:
-                  //   //         Border.all(width: 1, color: const Color(0XFF707070)))
-                  // ),
-                ),
-                //categories
-                const Eventbanner(),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Popular courses",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.grey, fontSize: 17.0),
-                    ),
-                    Text(
-                      "See more +",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(color: Colors.grey, fontSize: 13.0),
-                    )
-                  ],
-                ),
-                const CardCourseFactorySlider(qty: 5),
-
-                //sliders
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: SizedBox(
-                      // width: double.infinity,
-                      // ListView.builder(itemBuilder: itemBuilder)
-
-                      // child: )
-
-                      ),
-                ),
-
-                //categories
-                Padding(
-                  padding: const EdgeInsets.only(top: 0.0),
-                  child: Row(
+            children: [
+              SizedBox(
+                // height: 1700,
+                child: Column(children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    // child: Container(
+                    //   height: 50,
+                    //   child: Column(children: [
+                    //     Padding(
+                    //       padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    //       child: TextFormField(
+                    //         obscureText: false,
+                    //         enableSuggestions: false,
+                    //         autocorrect: false,
+                    //         controller: searchController,
+                    //         style: const TextStyle(
+                    //           fontSize: 15,
+                    //           color: Colors.black,
+                    //         ),
+                    //         decoration: const InputDecoration(
+                    //           icon: Icon(LineIcons.search, color: Color(0xFF5D9DEB)),
+                    //           hintText: "Search for a keyword",
+                    //           // border: InputBorder.none,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ]),
+                    //   // decoration: BoxDecoration(
+                    //   //     color: Colors.white,
+                    //   //     borderRadius: BorderRadius.circular(25),
+                    //   //     border:
+                    //   //         Border.all(width: 1, color: const Color(0XFF707070)))
+                    // ),
+                  ),
+                  //categories
+                  const Eventbanner(),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                        "Popular categories",
+                        "Popular courses",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.grey, fontSize: 17.0),
+                      ),
+                      Text(
+                        "See more +",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Colors.grey, fontSize: 13.0),
+                      )
+                    ],
+                  ),
+                  const CardCourseFactorySlider(qty: 5),
+
+                  //sliders
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0),
+                    child: SizedBox(
+                        // width: double.infinity,
+                        // ListView.builder(itemBuilder: itemBuilder)
+
+                        // child: )
+
+                        ),
+                  ),
+
+                  //categories
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Popular categories",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.grey, fontSize: 17.0),
+                        ),
+                        Text(
+                          "",
+                          textAlign: TextAlign.right,
+                          style: TextStyle(color: Colors.grey, fontSize: 13.0),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 4.0),
+                    child: SizedBox(
+                      height: 32.0,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: 5,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (BuildContext context, int index) {
+                            return GestureDetector(
+                              child: const Pillscategories(
+                                title: "JavaScript",
+                              ),
+                              onTap: () {
+                                Utils.kprint("Print js");
+                              },
+                            );
+                          }),
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        "Last tutorials",
                         textAlign: TextAlign.left,
                         style: TextStyle(color: Colors.grey, fontSize: 17.0),
                       ),
@@ -111,65 +151,25 @@ class _DashboardState extends State<Dashboard> {
                       )
                     ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: SizedBox(
-                    height: 32.0,
-                    child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 5,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (BuildContext context, int index) {
-                          return GestureDetector(
-                            child: const Pillscategories(
-                              title: "JavaScript",
-                            ),
-                            onTap: () {
-                              Utils.kprint("Print js");
-                            },
-                          );
-                        }),
+
+                  //sliders
+                  const CardCourseFactorySlider(qty: 5),
+                  const SizedBox(height: 4.0),
+                  const Text(
+                    "Small budget?",
+                    textAlign: TextAlign.center,
+                    style:
+                        TextStyle(color: Utils.variantpColor, fontSize: 27.0),
                   ),
-                ),
-
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
-                      "Last tutorials",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.grey, fontSize: 17.0),
-                    ),
-                    Text(
-                      "",
-                      textAlign: TextAlign.right,
-                      style: TextStyle(color: Colors.grey, fontSize: 13.0),
-                    )
-                  ],
-                ),
-
-                //sliders
-                const CardCourseFactorySlider(qty: 5),
-                const SizedBox(height: 4.0),
-                const Text(
-                  "Small budget?",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Utils.variantpColor, fontSize: 27.0),
-                ),
-                const Text(
-                  "Here's special discount for you",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.grey, fontSize: 15.0),
-                ),
-                const CardCourseFactorySlider(qty: 5),
-              ]),
-            ),
-          ),
-        ),
+                  const Text(
+                    "Here's special discount for you",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.grey, fontSize: 15.0),
+                  ),
+                  const CardCourseFactorySlider(qty: 5),
+                ]),
+              ),
+            ]),
       ),
     );
   }

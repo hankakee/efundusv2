@@ -19,77 +19,159 @@ class _AllcoursesState extends State<Allcourses> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        // color: Colors.yellow,
-        // height: MediaQuery.of(context).size.height - 40,
-        child: Column(
-          children: [
-            // textfield
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Utils.lightColor,
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        leadingWidth: double.infinity,
+        title: // textfield
             Container(
-              height: 50.0,
-              margin:
-                  const EdgeInsets.only(left: 5.0, right: 5.0, bottom: 10.0),
-              child: TextFormField(
-                obscureText: false,
-                enableSuggestions: false,
-                autocorrect: false,
-                controller: searchController,
-                style: const TextStyle(
-                  fontSize: 15,
-                  color: Colors.black,
-                ),
-                decoration: const InputDecoration(
-                  icon: Icon(LineIcons.search, color: Color(0xFF5D9DEB)),
-                  hintText: "Search for a keyword",
-                  border: InputBorder.none,
-                ),
-                onChanged: (text) {
-                  Utils.kprint(text);
-                  if (text.isEmpty) {
-                    setState(() {
-                      initSearch = false;
-                    });
-                  } else {
-                    setState(() {
-                      initSearch = true;
-                    });
-                  }
-                },
-              ),
-              decoration: BoxDecoration(
-                  // color: Colors.red,
-                  borderRadius: BorderRadius.circular(2.0),
-                  border: Border.all(width: 2, color: Utils.cardsColor)),
+          width: double.infinity,
+          height: 45.0,
+          margin: const EdgeInsets.only(left: 1.0, right: 1.0, bottom: 4.0),
+          child: TextFormField(
+            obscureText: false,
+            enableSuggestions: true,
+            autocorrect: false,
+            controller: searchController,
+            style: const TextStyle(
+              fontSize: 15,
+              color: Colors.black,
             ),
-            initSearch
-                ?
+            decoration: const InputDecoration(
+              icon: Icon(LineIcons.search, color: Color(0xFF5D9DEB)),
+              hintText: "Search for a keyword",
+              border: InputBorder.none,
+            ),
+            onChanged: (text) {
+              Utils.kprint(text);
+              if (text.isEmpty) {
+                setState(() {
+                  initSearch = false;
+                });
+              } else {
+                setState(() {
+                  initSearch = true;
+                });
+              }
+            },
+          ),
+          decoration: BoxDecoration(
+              // color: Colors.red,
+              borderRadius: BorderRadius.circular(2.0),
+              border: Border.all(width: 2, color: Utils.cardsColor)),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // initSearch
+              //     ?
+              //list of searched items
+              // SizedBox(
+              //     height: MediaQuery.of(context).size.height - 200,
+              //     child: ListView(
+              //       children: [
+              //         wrapperCard(),
+              //       ],
+              //     ),
+              //   )
+              // :
+              // // list of all items
+              // ListView(
+              //     // color: Colors.red,
+              //     // height: MediaQuery.of(context).size.height - 200,
+              //     children: [
+              //       wrapperCard(),
+              //       wrapperCard(),
+              //       wrapperCard(),
+              //       wrapperCard(),
+              //       wrapperCard(),
+              //       wrapperCard()
+              //     ],
+              //   )
+              initSearch
+                  ? Container(
+                      height: MediaQuery.of(context).size.height,
+                      // color: Colors.amberAccent,
+                      child: CarouselSlider(
+                          options: CarouselOptions(
+                              height: 322.0,
+                              reverse: false,
+                              autoPlay: false,
+                              enableInfiniteScroll: false,
+                              // fulscreen carrousel
+                              scrollDirection: Axis.vertical,
+                              padEnds: false,
+                              initialPage: 0),
+                          items: [1, 2, 3].map((i) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: CardCourse(
+                                    isFullScreen: true,
+                                    named: "widget.namecourse",
+                                    hasDescribe: false,
+                                    hasleftShopppingIcon: true,
+                                  ),
+                                );
+                              },
+                            );
+                          }).toList()))
+                  : Column(
+                      children: [
+                        SizedBox(
+                          height: 320,
+                          child: CardCourse(
+                            isFullScreen: true,
+                            named: "widget.namecourse",
+                            hasDescribe: false,
+                            hasleftShopppingIcon: true,
+                          ),
+                        ),
 
-                //list of searched items
-                SizedBox(
-                    height: MediaQuery.of(context).size.height - 200,
-                    child: ListView(
-                      children: [
-                        wrapperCard(),
+                        // Container(
+                        //     height: 302,
+                        //     child: CarouselSlider(
+                        //         options: CarouselOptions(
+                        //             // height: MediaQuery.of(context).size.height - 100,
+                        //             height: 302,
+                        //             reverse: false,
+                        //             autoPlay: false,
+                        //             enableInfiniteScroll: false,
+                        //             // fulscreen carrousel
+                        //             scrollDirection: Axis.horizontal,
+                        //             // enlargeCenterPage: true,
+                        //             padEnds: false,
+                        //             initialPage: 0),
+                        //         items: [1, 2, 3, 4, 5, 6, 7].map((i) {
+                        //           return Builder(
+                        //             builder: (BuildContext context) {
+                        //               return Container(
+                        //                 margin:
+                        //                     const EdgeInsets.only(bottom: 10.0),
+                        //                 // color: Colors.lightBlue,
+                        //                 width: MediaQuery.of(context).size.width,
+                        //                 child: CardCourse(
+                        //                   isFullScreen: true,
+                        //                   named: "widget.namecourse",
+                        //                   hasDescribe: false,
+                        //                   hasleftShopppingIcon: true,
+                        //                 ),
+                        //               );
+                        //             },
+                        //           );
+                        //         }).toList())),
                       ],
-                    ),
-                  )
-                :
-                //list of all items
-                Container(
-                    height: MediaQuery.of(context).size.height - 200,
-                    child: ListView(
-                      children: [
-                        wrapperCard(),
-                        wrapperCard(),
-                        wrapperCard(),
-                        wrapperCard(),
-                        wrapperCard(),
-                        wrapperCard()
-                      ],
-                    ),
-                  )
-          ],
+                    )
+            ],
+          ),
+          // color: Colors.yellow,
+          // height: MediaQuery.of(context).size.height - 40,
         ),
       ),
     );
@@ -99,7 +181,7 @@ class _AllcoursesState extends State<Allcourses> {
     return Padding(
         padding: const EdgeInsets.all(0.0),
         child: Column(
-          children: const [
+          children: [
             SizedBox(
                 child: CardCourse(
               isFullScreen: true,

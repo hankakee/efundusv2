@@ -51,7 +51,7 @@ class _SearchCoursesState extends State<SearchCourses> {
                         return Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
-                              children: const [
+                              children: [
                                 SizedBox(
                                     child: CardCourse(
                                   isFullScreen: true,

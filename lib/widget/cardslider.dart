@@ -21,7 +21,7 @@ class CardCourseFactorySlider extends StatefulWidget {
 class _CardCourseFactorySliderState extends State<CardCourseFactorySlider> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
         height: 302.0,
         child: CarouselSlider(
             options: CarouselOptions(

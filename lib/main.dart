@@ -1,3 +1,4 @@
+import 'package:efundusv2/page/viewcourse.dart';
 import 'package:flutter/material.dart';
 import 'package:efundusv2/page/onboarding_page.dart';
 import 'package:efundusv2/page/home_page.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.lightBlue, fontFamily: 'Plus Jakarta Sans'),
         // home: OnBoardingPage(),
-        home: const HomePage(),
+        // home: const HomePage(),
+        home: const ViewCourse(),
       );
 }
