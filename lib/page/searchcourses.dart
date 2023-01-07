@@ -41,7 +41,7 @@ class _SearchCoursesState extends State<SearchCourses> {
           // Utils.kprint(snapshot);
           return snapshot.connectionState == ConnectionState.waiting
               ? const CircularProgressIndicator()
-              : Container(
+              : SizedBox(
                   // color: Colors.amberAccent,
                   height: MediaQuery.of(context).size.height - 220,
                   child: ListView.builder(

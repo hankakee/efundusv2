@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.lightBlue, fontFamily: 'Plus Jakarta Sans'),
         // home: OnBoardingPage(),
-        // home: const HomePage(),
-        home: const ViewCourse(),
+        home: const HomePage(),
+        // home: const ViewCourse(),
       );
 }

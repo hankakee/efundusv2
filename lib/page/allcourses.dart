@@ -1,9 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:efundusv2/model/_courses.dart';
 import 'package:efundusv2/page/searchcourses.dart';
 import 'package:efundusv2/utils/constants.dart';
 import 'package:efundusv2/widget/card_course.dart';
 import 'package:efundusv2/widget/cardslider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:line_icons/line_icons.dart';
 
 class Allcourses extends StatefulWidget {
@@ -59,7 +61,6 @@ class _AllcoursesState extends State<Allcourses> {
             },
           ),
           decoration: BoxDecoration(
-              // color: Colors.red,
               borderRadius: BorderRadius.circular(2.0),
               border: Border.all(width: 2, color: Utils.cardsColor)),
         ),
@@ -68,60 +69,35 @@ class _AllcoursesState extends State<Allcourses> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // initSearch
-              //     ?
-              //list of searched items
-              // SizedBox(
-              //     height: MediaQuery.of(context).size.height - 200,
-              //     child: ListView(
-              //       children: [
-              //         wrapperCard(),
-              //       ],
-              //     ),
-              //   )
-              // :
-              // // list of all items
-              // ListView(
-              //     // color: Colors.red,
-              //     // height: MediaQuery.of(context).size.height - 200,
-              //     children: [
-              //       wrapperCard(),
-              //       wrapperCard(),
-              //       wrapperCard(),
-              //       wrapperCard(),
-              //       wrapperCard(),
-              //       wrapperCard()
-              //     ],
-              //   )
+              //result of what you typed
               initSearch
-                  ? Container(
-                      height: MediaQuery.of(context).size.height,
-                      // color: Colors.amberAccent,
-                      child: CarouselSlider(
-                          options: CarouselOptions(
-                              height: 322.0,
-                              reverse: false,
-                              autoPlay: false,
-                              enableInfiniteScroll: false,
-                              // fulscreen carrousel
-                              scrollDirection: Axis.vertical,
-                              padEnds: false,
-                              initialPage: 0),
-                          items: [1, 2, 3].map((i) {
-                            return Builder(
-                              builder: (BuildContext context) {
-                                return Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: CardCourse(
-                                    isFullScreen: true,
-                                    named: "widget.namecourse",
-                                    hasDescribe: false,
-                                    hasleftShopppingIcon: true,
-                                  ),
-                                );
-                              },
-                            );
-                          }).toList()))
+                  ? Center(
+                      child: FutureBuilder(
+                          future: Course().byCourseName(searchController.text),
+                          builder:
+                              (BuildContext context, AsyncSnapshot snapshot) {
+                            // Utils.kprint(snapshot);
+                            return snapshot.connectionState ==
+                                    ConnectionState.waiting
+                                ? SizedBox(
+                                    width: double.infinity,
+                                    height: MediaQuery.of(context).size.height -
+                                        150,
+                                    child: const Center(
+                                        child: CircularProgressIndicator()),
+                                  )
+                                : Column(children: [
+                                    SizedBox(
+                                      height: 320,
+                                      child: CardCourse(
+                                        isFullScreen: true,
+                                        named: "widget.namecourse",
+                                        hasDescribe: false,
+                                        hasleftShopppingIcon: true,
+                                      ),
+                                    ),
+                                  ]);
+                          }))
                   : Column(
                       children: [
                         SizedBox(
@@ -133,45 +109,28 @@ class _AllcoursesState extends State<Allcourses> {
                             hasleftShopppingIcon: true,
                           ),
                         ),
-
-                        // Container(
-                        //     height: 302,
-                        //     child: CarouselSlider(
-                        //         options: CarouselOptions(
-                        //             // height: MediaQuery.of(context).size.height - 100,
-                        //             height: 302,
-                        //             reverse: false,
-                        //             autoPlay: false,
-                        //             enableInfiniteScroll: false,
-                        //             // fulscreen carrousel
-                        //             scrollDirection: Axis.horizontal,
-                        //             // enlargeCenterPage: true,
-                        //             padEnds: false,
-                        //             initialPage: 0),
-                        //         items: [1, 2, 3, 4, 5, 6, 7].map((i) {
-                        //           return Builder(
-                        //             builder: (BuildContext context) {
-                        //               return Container(
-                        //                 margin:
-                        //                     const EdgeInsets.only(bottom: 10.0),
-                        //                 // color: Colors.lightBlue,
-                        //                 width: MediaQuery.of(context).size.width,
-                        //                 child: CardCourse(
-                        //                   isFullScreen: true,
-                        //                   named: "widget.namecourse",
-                        //                   hasDescribe: false,
-                        //                   hasleftShopppingIcon: true,
-                        //                 ),
-                        //               );
-                        //             },
-                        //           );
-                        //         }).toList())),
+                        SizedBox(
+                          height: 320,
+                          child: CardCourse(
+                            isFullScreen: true,
+                            named: "widget.v2",
+                            hasDescribe: false,
+                            hasleftShopppingIcon: true,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 320,
+                          child: CardCourse(
+                            isFullScreen: true,
+                            named: "widget.v3",
+                            hasDescribe: false,
+                            hasleftShopppingIcon: true,
+                          ),
+                        ),
                       ],
                     )
             ],
           ),
-          // color: Colors.yellow,
-          // height: MediaQuery.of(context).size.height - 40,
         ),
       ),
     );
@@ -189,7 +148,7 @@ class _AllcoursesState extends State<Allcourses> {
               hasDescribe: false,
               hasleftShopppingIcon: true,
             )),
-            Divider()
+            const Divider()
           ],
         ));
   }
