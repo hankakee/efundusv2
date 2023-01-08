@@ -123,12 +123,12 @@ class _CardCourseState extends State<CardCourse> {
             ),
           ),
         ),
-        const SizedBox(
+        SizedBox(
           width: double.infinity,
           child: Text(
-            " widget.named",
+            widget.named,
             textAlign: TextAlign.left,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
           ),
         ),
         Container(

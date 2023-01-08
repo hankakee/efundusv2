@@ -73,10 +73,10 @@ class _AllcoursesState extends State<Allcourses> {
               initSearch
                   ? Center(
                       child: FutureBuilder(
-                          future: Course().byCourseName(searchController.text),
+                          future: Course.byCourseName(searchController.text),
                           builder:
                               (BuildContext context, AsyncSnapshot snapshot) {
-                            // Utils.kprint(snapshot);
+                            Utils.kprint(snapshot);
                             return snapshot.connectionState ==
                                     ConnectionState.waiting
                                 ? SizedBox(
@@ -86,49 +86,53 @@ class _AllcoursesState extends State<Allcourses> {
                                     child: const Center(
                                         child: CircularProgressIndicator()),
                                   )
-                                : Column(children: [
-                                    SizedBox(
+                                : Column(
+                                    children: List.generate(
+                                        snapshot.data.length, (index) {
+                                    Course _oneCourse = snapshot.data[index];
+                                    return SizedBox(
                                       height: 320,
                                       child: CardCourse(
                                         isFullScreen: true,
-                                        named: "widget.namecourse",
+                                        named: _oneCourse.coursename,
                                         hasDescribe: false,
                                         hasleftShopppingIcon: true,
                                       ),
-                                    ),
-                                  ]);
+                                    );
+                                  }));
                           }))
-                  : Column(
-                      children: [
-                        SizedBox(
-                          height: 320,
-                          child: CardCourse(
-                            isFullScreen: true,
-                            named: "widget.namecourse",
-                            hasDescribe: false,
-                            hasleftShopppingIcon: true,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 320,
-                          child: CardCourse(
-                            isFullScreen: true,
-                            named: "widget.v2",
-                            hasDescribe: false,
-                            hasleftShopppingIcon: true,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 320,
-                          child: CardCourse(
-                            isFullScreen: true,
-                            named: "widget.v3",
-                            hasDescribe: false,
-                            hasleftShopppingIcon: true,
-                          ),
-                        ),
-                      ],
-                    )
+                  : Center(
+                      child: FutureBuilder(
+                        future: Course.all(),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          Utils.kprint(snapshot);
+                          return snapshot.connectionState ==
+                                  ConnectionState.waiting
+                              ? SizedBox(
+                                  width: double.infinity,
+                                  height:
+                                      MediaQuery.of(context).size.height - 150,
+                                  child: const Center(
+                                      child: CircularProgressIndicator()),
+                                )
+                              : Column(
+                                  children: List.generate(snapshot.data.length,
+                                      (index) {
+                                  Course _oneCourse = snapshot.data[index];
+                                  return SizedBox(
+                                    height: 320,
+                                    child: CardCourse(
+                                      isFullScreen: true,
+                                      named: _oneCourse.coursename,
+                                      hasDescribe: false,
+                                      hasleftShopppingIcon: true,
+                                    ),
+                                  );
+                                }));
+                        },
+                      ),
+                    ),
             ],
           ),
         ),
