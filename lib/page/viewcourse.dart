@@ -1,3 +1,4 @@
+import 'package:efundusv2/model/_courses.dart';
 import 'package:efundusv2/page/home_page.dart';
 import 'package:efundusv2/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,8 @@ import 'package:efundusv2/widget/card_course.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ViewCourse extends StatefulWidget {
-  const ViewCourse({Key? key}) : super(key: key);
+  final Course courseValue;
+  const ViewCourse({Key? key, required this.courseValue}) : super(key: key);
 
   @override
   State<ViewCourse> createState() => _ViewCourseState();
@@ -80,8 +82,8 @@ class _ViewCourseState extends State<ViewCourse> {
                       child: CardCourse(
                         isFullScreen: true,
                         hasDescribe: true,
+                        courseObj: widget.courseValue,
                         hasleftShopppingIcon: true,
-                        named: "Brither",
                       ),
                     ),
                     const Divider(),

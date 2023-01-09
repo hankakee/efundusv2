@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:efundusv2/model/_courses.dart';
-import 'package:efundusv2/page/searchcourses.dart';
+
 import 'package:efundusv2/utils/constants.dart';
 import 'package:efundusv2/widget/card_course.dart';
 import 'package:efundusv2/widget/cardslider.dart';
@@ -94,7 +94,7 @@ class _AllcoursesState extends State<Allcourses> {
                                       height: 320,
                                       child: CardCourse(
                                         isFullScreen: true,
-                                        named: _oneCourse.coursename,
+                                        courseObj: _oneCourse,
                                         hasDescribe: false,
                                         hasleftShopppingIcon: true,
                                       ),
@@ -120,11 +120,12 @@ class _AllcoursesState extends State<Allcourses> {
                                   children: List.generate(snapshot.data.length,
                                       (index) {
                                   Course _oneCourse = snapshot.data[index];
-                                  return SizedBox(
+                                  return Container(
+                                    margin: const EdgeInsets.only(top: 15.0),
                                     height: 320,
                                     child: CardCourse(
                                       isFullScreen: true,
-                                      named: _oneCourse.coursename,
+                                      courseObj: _oneCourse,
                                       hasDescribe: false,
                                       hasleftShopppingIcon: true,
                                     ),
@@ -138,22 +139,5 @@ class _AllcoursesState extends State<Allcourses> {
         ),
       ),
     );
-  }
-
-  Widget wrapperCard() {
-    return Padding(
-        padding: const EdgeInsets.all(0.0),
-        child: Column(
-          children: [
-            SizedBox(
-                child: CardCourse(
-              isFullScreen: true,
-              named: "named",
-              hasDescribe: false,
-              hasleftShopppingIcon: true,
-            )),
-            const Divider()
-          ],
-        ));
   }
 }

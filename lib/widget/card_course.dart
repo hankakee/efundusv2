@@ -1,3 +1,4 @@
+import 'package:efundusv2/model/_courses.dart';
 import 'package:efundusv2/page/viewcourse.dart';
 import 'package:efundusv2/utils/constants.dart';
 import "package:flutter/material.dart";
@@ -8,12 +9,13 @@ class CardCourse extends StatefulWidget {
   final bool isFullScreen;
   final bool hasDescribe;
   final bool hasleftShopppingIcon;
-  final String named;
+  final Course courseObj;
   bool hasdiscount = true;
+
   CardCourse(
       {Key? key,
+      required this.courseObj,
       required this.isFullScreen,
-      required this.named,
       required this.hasDescribe,
       required this.hasleftShopppingIcon,
       hasdiscount})
@@ -78,8 +80,9 @@ class _CardCourseState extends State<CardCourse> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const ViewCourse()));
+                                              builder: (context) => ViewCourse(
+                                                  courseValue:
+                                                      widget.courseObj)));
                                     },
                                   ),
                                 ),
@@ -87,7 +90,7 @@ class _CardCourseState extends State<CardCourse> {
                               Expanded(
                                   child: CardCourse(
                                 isFullScreen: true,
-                                named: "Full brother",
+                                courseObj: widget.courseObj,
                                 hasDescribe: true,
                                 hasleftShopppingIcon: false,
                               )),
@@ -97,47 +100,51 @@ class _CardCourseState extends State<CardCourse> {
                       });
                 },
           child: SizedBox(
-            child: Stack(
-              children: [
-                GestureDetector(
-                  child: Image.asset(
-                    "assets/courses/htmlcsscourse.jpg",
-                    fit: BoxFit.cover,
-                    width: widget.isFullScreen
-                        ? MediaQuery.of(context).size.width
-                        : MediaQuery.of(context).size.width / 1.3,
-                  ),
-                ),
-                Positioned(
-                    right: 5.0,
-                    top: 5.0,
-                    child: Visibility(
-                      visible: widget.hasleftShopppingIcon,
-                      child: Icon(
-                        LineIcons.shoppingBasket,
-                        size: widget.isFullScreen ? 30.0 : 24.0,
-                        color: Utils.cardsColor,
-                      ),
-                    )),
-              ],
+            child: GestureDetector(
+              child: Image.asset(
+                widget.courseObj.imgUrl,
+                fit: BoxFit.cover,
+                width: widget.isFullScreen
+                    ? MediaQuery.of(context).size.width
+                    : MediaQuery.of(context).size.width / 1.3,
+              ),
             ),
           ),
         ),
         SizedBox(
           width: double.infinity,
-          child: Text(
-            widget.named,
-            textAlign: TextAlign.left,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                widget.courseObj.coursename,
+                textAlign: TextAlign.left,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 16.0),
+              ),
+              Visibility(
+                visible: widget.hasleftShopppingIcon,
+                child: GestureDetector(
+                  onTap: () {
+                    Utils.kprint("Add this is our cart");
+                  },
+                  child: Icon(
+                    LineIcons.shoppingBasket,
+                    size: widget.isFullScreen ? 28.0 : 22.0,
+                    color: Color.fromARGB(255, 117, 117, 117),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
         Container(
           width: double.infinity,
           padding: const EdgeInsets.only(top: 1.0, bottom: 5.0),
-          child: const Text(
-            "Michel Karnet ,Cyber carnet formations",
+          child: Text(
+            widget.courseObj.pTrainer + " , " + widget.courseObj.sTrainer,
             textAlign: TextAlign.left,
-            style: TextStyle(fontSize: 13.0),
+            style: const TextStyle(fontSize: 13.0),
           ),
         ),
         Visibility(
@@ -154,7 +161,7 @@ class _CardCourseState extends State<CardCourse> {
             )),
         Row(
           children: [
-            const Text("3,5"),
+            Text(widget.courseObj.rate.toString()),
             RatingBarIndicator(
               rating: 3.5,
               direction: Axis.horizontal,
@@ -165,35 +172,35 @@ class _CardCourseState extends State<CardCourse> {
                 color: Utils.secondaryColor,
               ),
             ),
-            const Text("(439)"),
+            Text("(" + widget.courseObj.reviews.toString() + ")"),
           ],
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 3.0),
           child: Row(
             children: [
-              Text("84.02",
+              Text(widget.courseObj.price.toString(),
                   style:
                       TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
-              Text(" HTG",
-                  style:
-                      TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
-              SizedBox(
+              Text(" " + widget.courseObj.currency.toString(),
+                  style: const TextStyle(
+                      fontSize: 18.0, fontWeight: FontWeight.bold)),
+              const SizedBox(
                 width: 10.0,
               ),
-              widget.hasdiscount
+              widget.courseObj.oldprice > 0
                   ? Row(
-                      children: const [
-                        Text("135.50",
-                            style: TextStyle(
+                      children: [
+                        Text(" " + widget.courseObj.oldprice.toString(),
+                            style: const TextStyle(
                               fontSize: 11.0,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.lineThrough,
                               decorationColor: Colors.red,
                               decorationStyle: TextDecorationStyle.solid,
                             )),
-                        Text(" HTG",
-                            style: TextStyle(
+                        Text(" " + widget.courseObj.currency,
+                            style: const TextStyle(
                               fontSize: 11.0,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.lineThrough,
@@ -211,10 +218,10 @@ class _CardCourseState extends State<CardCourse> {
           padding: const EdgeInsets.all(3.0),
           margin: const EdgeInsets.only(top: 3.0),
           color: Utils.primaryColor,
-          child: const Text(
-            "Nouveau",
-            style:
-                TextStyle(color: Utils.lightColor, fontWeight: FontWeight.bold),
+          child: Text(
+            " " + widget.courseObj.info,
+            style: const TextStyle(
+                color: Utils.lightColor, fontWeight: FontWeight.bold),
           ),
         ),
         widget.hasDescribe
@@ -237,7 +244,8 @@ class _CardCourseState extends State<CardCourse> {
                     primary: Utils.primaryColor,
                   ),
                   onPressed: () {
-                    Utils.kprint('Pressed add to cart button....');
+                    Utils.kprint('Pressed add to cart button....' +
+                        widget.courseObj.id.toString());
                   },
                 ),
               ),

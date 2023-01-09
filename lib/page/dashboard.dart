@@ -79,7 +79,7 @@ class _DashboardState extends State<Dashboard> {
                       )
                     ],
                   ),
-                  const CardCourseFactorySlider(qty: 5),
+                  // const CardCourseFactorySlider(qty: 5),
 
                   //sliders
                   Padding(
@@ -153,7 +153,7 @@ class _DashboardState extends State<Dashboard> {
                   ),
 
                   //sliders
-                  const CardCourseFactorySlider(qty: 5),
+                  // const CardCourseFactorySlider(qty: 5),
                   const SizedBox(height: 4.0),
                   const Text(
                     "Small budget?",
@@ -166,7 +166,7 @@ class _DashboardState extends State<Dashboard> {
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.grey, fontSize: 15.0),
                   ),
-                  const CardCourseFactorySlider(qty: 5),
+                  // const CardCourseFactorySlider(qty: 5),
                 ]),
               ),
             ]),
